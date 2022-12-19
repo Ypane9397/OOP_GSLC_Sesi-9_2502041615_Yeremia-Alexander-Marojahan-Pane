@@ -25,16 +25,16 @@ public class Main {
 			
 			switch(input){
 				case 1:
-					menufunc.view1();
+					menufunc.view1(); //untuk menunjukkan daftar mobil
 					break;
 				case 2:
-					menufunc.addMobil();
+					menufunc.addMobil(); //fungsi untuk menjual mobil
 					break;
 				case 3:
-					menufunc.buyMobil();
+					menufunc.buyMobil(); //fungsi untuk membeli mobil
 					break;
 				case 4:
-					menufunc.viewHist();
+					menufunc.viewHist(); //fungsi untuk melihat riwayat pembelian
 					break;
 			}
 		} while(input != 5);

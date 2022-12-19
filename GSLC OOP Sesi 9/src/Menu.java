@@ -20,64 +20,63 @@ public class Menu {
 		
 		do {
 			System.out.println("Nama Penjual : ");
-			costumerName = sc.nextLine();
+			costumerName = sc.nextLine(); //input nama penjual
 		}while(costumerName.isBlank());
 		
 		do {
 			System.out.println("Jenis Mobil [Sedan | SUV | Semi SUV | EV]: ");
-			jenisMobil = sc.nextLine();
+			jenisMobil = sc.nextLine(); //input jenis mobil
 		}while(!jenisMobil.equals("Sedan") && !jenisMobil.equals("SUV") && !jenisMobil.equals("Semi SUV") && !jenisMobil.equals("UV"));
 		
 		do {
 			System.out.println("Merk Mobil : ");
-			merkMobil = sc.nextLine();
+			merkMobil = sc.nextLine(); //input merk mobil
 		}while(merkMobil.isBlank());
 		
 		do {
 			System.out.println("Warna Mobil : ");
-			warnaMobil = sc.nextLine();
+			warnaMobil = sc.nextLine(); //input warna mobi;
 		}while(warnaMobil.isBlank());
 		
 		do {
 			System.out.println("Tahun Produksi [2000-2022]: ");
-			tahunProduksi = sc.nextInt(); sc.nextLine();
+			tahunProduksi = sc.nextInt(); sc.nextLine(); //input tahun produksi mobil
 		}while(tahunProduksi < 2000 || tahunProduksi > 2022);
 		
 		do {
 			System.out.println("Kilometer Mobil: ");
-			kmMobil = sc.nextInt(); sc.nextLine();
+			kmMobil = sc.nextInt(); sc.nextLine(); //input jarak yang sudah ditempuh mobil dalam kilometer
 		}while(kmMobil < 0);
 		
 		do {
 			System.out.println("Plat Mobil: ");
-			platMobil = sc.nextLine();
+			platMobil = sc.nextLine(); //input plat nomor mobil
 		}while(platMobil.isBlank());
 		
 		do {
 			System.out.println("Surat [Lengkap | Tidak Lengkap]: ");
-			Surat = sc.nextLine();
+			Surat = sc.nextLine(); //input apakah surat lengkap atau tidak lengkap
 		}while(!Surat.equals("Lengkap") && !Surat.equals("Tidak Lengkap"));
 		
 		do {
 			System.out.println("Harga Jual (dalam Rp): ");
-			hargaJual = sc.nextInt(); sc.nextLine();
+			hargaJual = sc.nextInt(); sc.nextLine(); //input harga jual mobil
 		}while(hargaJual < 0);
 		
 		Mobil mbl = new Mobil(costumerName, jenisMobil, merkMobil, warnaMobil, tahunProduksi,
 				kmMobil, platMobil, Surat, hargaJual);
-//		Mobil mbl = new Mobil("dadad", "Sedan", "Honda", "Kuning", 2000, 29000, "B3339PPQ", "Lengkap", 2000000);
 		data.add(mbl);
 		
 		System.out.println("\n Sukses!");
 	}
 	
-	public void view() {
-		if(data.isEmpty()) {
+	public void view() { //view daftar mobil
+		if(data.isEmpty()) { //hasil print jika tidak ada data
 			System.out.println("No Data");
 			return;
 		}
 		
-		for(int i=0; i<data.size(); i++) {
+		for(int i=0; i<data.size(); i++) { //hasil print jika ada data
 			System.out.printf("Jenis Mobil      : %s\n", data.get(i).getJenisMobil());
 			System.out.printf("Merek Mobil      : %s\n", data.get(i).getMerkMobil());
 			System.out.printf("Warna Mobil      : %s\n", data.get(i).getWarnaMobil());
@@ -113,7 +112,7 @@ public class Menu {
 		String date;
 		String type;
 		
-		view();
+		view(); //menunjukkan daftar mobil
 		if(data.isEmpty()) {
 			System.out.println("\nPress Enter to Continue");
 			sc.nextLine();
@@ -122,24 +121,24 @@ public class Menu {
 		
 		do {
 			System.out.println("Nama Pembeli: ");
-			buyerName = sc.nextLine();
+			buyerName = sc.nextLine(); //input nama pembeli
 		}while(buyerName.isBlank());
 		
 		do {
 			System.out.println("Nomor KTP: ");
-			identity = sc.nextLine();
+			identity = sc.nextLine(); //input nomor ktp pembeli
 		}while(identity.isBlank());
 		
 		do {
 			System.out.println("Alamat Pembeli: ");
-			address = sc.nextLine();
+			address = sc.nextLine(); //input alamat pembeli
 		}while(address.isBlank());
 		
 		boolean checker = false;
 		int idx = 0;
 		do {
 			System.out.println("Plat Nomor: ");
-			platMobil = sc.nextLine();
+			platMobil = sc.nextLine(); input plat mobil yang ingin dibeli
 			for(int i=0; i<data.size(); i++) {
 				if(platMobil.equals(data.get(i).getPlatMobil())) {
 					idx = i;
@@ -147,11 +146,11 @@ public class Menu {
 					break;							
 				}
 			}
-		}while(! checker);
+		}while(! checker); //jika plat mobil yang diinput tidak ada di dalam daftar mobil, maka proses ini akan di ulang
 		
 		costumerName = data.get(idx).getCostumerName();
 		jenisMobil = data.get(idx).getJenisMobil();
-	    merkMobil = data.get(idx).getMerkMobil();
+	    	merkMobil = data.get(idx).getMerkMobil();
 		warnaMobil = data.get(idx).getWarnaMobil();
 		tahunProduksi = data.get(idx).getTahunProduksi();
 		kmMobil = data.get(idx).getKmMobil();
@@ -161,18 +160,18 @@ public class Menu {
 		
 		do {
 			System.out.println("Tipe Pembayaran [Cash | Cashless]: ");
-			type = sc.nextLine();
+			type = sc.nextLine(); //input tipe pembayaran apakah Cash atau Cashless
 		}while(!type.equals("Cash") && !type.equals("Cashless"));
 		
 		int bayar, kembalian;
 		Function func = new Function();
 		
 		if(type.equals("Cash")) {
-			do {
+			do { // akan menunjukkan jumlah harga yang harus dibayar
 				System.out.printf("Jumlah Uang min. Rp%d : ", hargaJual);
 				bayar = sc.nextInt(); sc.nextLine();
 			} while(bayar < hargaJual);
-			kembalian = func.htg(hargaJual, bayar);
+			kembalian = func.htg(hargaJual, bayar); //jika pembeli memberikan uang lebih besar dari harga jual, maka pembeli akan mendapat kembalian
 			System.out.printf("Kembalian : Rp%d\n", kembalian);
 		}
 			
@@ -188,13 +187,13 @@ public class Menu {
 	}
 	
 	public void viewHist() {
-		if(hist.isEmpty()) {
+		if(hist.isEmpty()) {//hasil print jika tidak ada data dalam riwayat pembelian
 			System.out.println("NO Data\n\nPress Enter to Continue");
 			sc.nextLine();
 			return;
 		}
 
-		for(int i=0; i<hist.size(); i++) {
+		for(int i=0; i<hist.size(); i++) {//hasil print jika ada data dalam riwayat pembelian
 			System.out.printf("ID Transaksi %s\n", hist.get(i).getTransaksi());
 			System.out.printf("Nama Pembeli      : %s\n", hist.get(i).getBuyerName());
 			System.out.printf("Nomor KTP         : %s\n", hist.get(i).getIdentity());
